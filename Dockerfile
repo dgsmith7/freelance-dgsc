@@ -1,23 +1,26 @@
-# Use an official Node.js runtime as the base image
-FROM node:18-alpine
+# Base image - Using Node.js 20 Alpine for a smaller footprint
+FROM node:20-alpine
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+# Copy package files
+COPY package.json package-lock.json ./
 
-# Install dependencies
-RUN npm install
+# Install dependencies 
+RUN npm ci --production
 
-# Copy the rest of the application code to the working directory
+# Copy project files
 COPY . .
 
-# Build the application for production
+# Build the production version
 RUN npm run build
 
-# Expose the port the app runs on
+# Install a simple HTTP server to serve the static content
+RUN npm install -g serve
+
+# Expose the port the app will run on
 EXPOSE 5000
 
-# Start the application
-CMD ["npm", "run", "server"]
+# Command to run the app
+CMD ["serve", "-s", "dist", "-l", "5000"]

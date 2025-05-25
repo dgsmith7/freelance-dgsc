@@ -2,29 +2,48 @@
 
 /* Base styles and fonts */
 :root {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
+  /* Typography - More technical, clean font stack */
+  --font-sans: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", "Roboto Mono", Menlo, Consolas,
+    monospace;
 
-/* Theme colors */
-:root {
-  --text-primary: #111827;
-  --text-secondary: #4b5563;
+  /* Light mode - Enhanced contrast */
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
   --bg-primary: #ffffff;
-  --bg-secondary: #f9fafb;
-  --accent-primary: #3b82f6;
-  --accent-secondary: #1d4ed8;
-  --border-color: #e5e7eb;
+  --bg-secondary: #f7fafc;
+  --accent-primary: #3182ce;
+  --accent-secondary: #2c5282;
+  --border-color: #e2e8f0;
+  --card-bg: #ffffff;
+  --input-bg: #f9fafb;
+
+  /* Subtle shadow for depth without heaviness */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 html.dark {
-  --text-primary: #f9fafb;
-  --text-secondary: #9ca3af;
-  --bg-primary: #0a0f1e;
-  --bg-secondary: #111827;
-  --accent-primary: #60a5fa;
-  --accent-secondary: #3b82f6;
-  --border-color: #374151;
+  /* Dark mode - Richer, more contrasting colors */
+  --text-primary: #f7fafc;
+  --text-secondary: #a0aec0;
+  --bg-primary: #0f1629; /* Deeper blue-black for more tech-focused feel */
+  --bg-secondary: #1a2233; /* Slightly lighter than primary for subtle contrast */
+  --accent-primary: #4299e1; /* Brighter accent for dark mode visibility */
+  --accent-secondary: #63b3ed;
+  --border-color: #2d3748;
+  --card-bg: #1a202c; /* Slightly lighter than bg for card distinction */
+  --input-bg: #2d3748;
+
+  /* Enhanced shadows for dark mode */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5),
+    0 2px 4px -1px rgba(0, 0, 0, 0.4);
+
   color-scheme: dark;
 }
 
@@ -34,6 +53,35 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-sans);
+  letter-spacing: -0.011em; /* Subtle letter spacing for modern tech look */
+  line-height: 1.5;
+}
+
+/* Make sure dark mode class is defined properly */
+html.dark {
+  --bg-primary: #1a202c; /* Dark background */
+  --bg-secondary: #2d3748;
+  --text-primary: #f7fafc;
+  --text-secondary: #e2e8f0;
+}
+
+/* Apply monospace font to code elements */
+code,
+pre,
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Clean, modern headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em; /* Tighter tracking for tech-forward headings */
+  line-height: 1.2;
 }
 
 /* Theme transitions */
@@ -43,7 +91,8 @@ html {
 
 /* Theme transition for specific elements */
 body * {
-  transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out,
+    color 0.5s ease-in-out;
 }
 
 /* Global transition settings */
@@ -56,6 +105,33 @@ body * {
   transition-duration: 300ms;
 }
 
+/* Aspect ratio utilities */
+.aspect-w-16 {
+  position: relative;
+  padding-bottom: calc(9 / 16 * 100%);
+}
+
+.aspect-h-9 {
+  /* This is handled by aspect-w-16 */
+}
+
+.aspect-w-16 > * {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Focus styles for accessibility - more subtle but still visible */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent-primary);
+}
+
 /* Reduce motion when user prefers it */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -66,4 +142,51 @@ body * {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Text utilities */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Enhanced fade-in animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.fade-in-right {
+  animation: fadeInRight 0.5s ease-out forwards;
+}
+
+.stagger-item {
+  opacity: 0;
+}
+
+.stagger-item.visible {
+  animation: fadeIn 0.5s ease-out forwards;
 }

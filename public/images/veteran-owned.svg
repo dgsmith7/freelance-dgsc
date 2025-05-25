@@ -1,8 +1,0 @@
-<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="60" cy="60" r="60" fill="#3B82F6" class="dark:fill-blue-700 fill-blue-600" />
-  <path d="M60 20L68.1 45.5H94.8L73.4 61L81.5 86.5L60 71L38.5 86.5L46.6 61L25.2 45.5H51.9L60 20Z" fill="white" class="dark:fill-gray-100 fill-white" />
-  <path d="M40 95H80M60 41.5V95" stroke="white" class="dark:stroke-gray-100 stroke-white" stroke-width="4" />
-  <text x="60" y="110" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle" class="dark:fill-gray-100 fill-white">
-    VETERAN OWNED
-  </text>
-</svg>

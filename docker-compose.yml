@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  # Frontend web application
+  website:
+    build: .
+    container_name: dgsc-website
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      # Add any other environment variables needed
+    volumes:
+      # Optional: For development, you might want to mount these
+      # - ./src:/app/src
+      # For persistent storage of uploaded files (if needed)
+      - ./uploads:/app/uploads
+
+  # Optional: Add a mail service if you're using nodemailer standalone
+  # mailserver:
+  #   image: mailhog/mailhog
+  #   container_name: dgsc-mailserver
+  #   ports:
+  #     - "1025:1025" # SMTP server
+  #     - "8025:8025" # Web UI
+  #   restart: unless-stopped
+
+networks:
+  default:
+    name: dgsc-network

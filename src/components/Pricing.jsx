@@ -1,77 +1,162 @@
 import React from "react";
 
-const pricingOptions = [
-  {
-    id: 1,
-    title: "Starter",
-    price: "$300",
-    description: "A single-page website (e.g., landing page).",
-    features: ["Responsive design", "Basic SEO", "Email support"],
-  },
-  {
-    id: 2,
-    title: "Basic",
-    price: "$500",
-    description: "A simple, clean website with up to 3 pages.",
-    features: ["Responsive design", "Basic SEO", "Email support"],
-  },
-  {
-    id: 3,
-    title: "Standard",
-    price: "$1,000",
-    description: "A fully-featured website with up to 7 pages.",
-    features: [
-      "Responsive design",
-      "Advanced SEO",
-      "Contact form",
-      "Email support",
-    ],
-  },
-  {
-    id: 4,
-    title: "Premium",
-    price: "$2,000+",
-    description: "A bespoke web application tailored to your needs.",
-    features: ["Custom design", "Advanced features", "Priority support"],
-  },
-  {
-    id: 5,
-    title: "Enterprise",
-    price: "$5,000+",
-    description: "Large-scale projects for businesses.",
-    features: ["Custom design", "Scalable architecture", "Dedicated support"],
-  },
-];
-
 function Pricing() {
+  const pricingTiers = [
+    {
+      name: "Standard",
+      description: "For simple websites and basic applications",
+      price: "$3,500",
+      duration: "2-3 weeks",
+      features: [
+        "Responsive website or simple web app",
+        "Up to 5 pages or screens",
+        "Basic interactive elements",
+        "Content management integration",
+        "Mobile-friendly design",
+        "Basic SEO optimization",
+      ],
+      suggested: "Ideal for small businesses and personal projects",
+      estimatedHours: "35-45 hours",
+    },
+    {
+      name: "Professional",
+      description: "For advanced websites and interactive applications",
+      price: "$8,500",
+      duration: "4-8 weeks",
+      features: [
+        "Dynamic web application",
+        "Custom animations and interactions",
+        "API integration",
+        "User authentication system",
+        "Dashboard or admin interface",
+        "Performance optimization",
+        "Comprehensive testing",
+      ],
+      suggested: "Perfect for established businesses and specialized needs",
+      estimatedHours: "85-115 hours",
+      highlight: true,
+    },
+    {
+      name: "Premium",
+      description: "For specialized technical projects",
+      price: "$15,000+",
+      duration: "8-12 weeks",
+      features: [
+        "Advanced 3D graphics or visualizations",
+        "Custom WebGL or Three.js development",
+        "Blockchain/smart contract integration",
+        "AI/ML implementation",
+        "Complex data processing",
+        "Custom algorithm development",
+        "Comprehensive documentation",
+      ],
+      suggested: "Ideal for technical innovations and specialized applications",
+      estimatedHours: "150+ hours",
+    },
+  ];
+
   return (
-    <section className="p-8 bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
-      <h2 className="text-2xl font-bold text-center mb-6">Pricing</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {pricingOptions.map((option) => (
-          <div
-            key={option.id}
-            className="border rounded-lg p-6 shadow-lg bg-white dark:bg-gray-800"
+    <section className="py-16 px-8 bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
+      <div className="container mx-auto max-w-5xl">
+        <h2 className="text-3xl font-semibold text-center mb-3">Pricing</h2>
+        <p className="text-center text-lightTextSecondary dark:text-darkTextSecondary mb-10 max-w-2xl mx-auto">
+          Transparent pricing options designed to deliver excellent value for
+          your investment
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {pricingTiers.map((tier, index) => (
+            <div
+              key={index}
+              className={`rounded-lg overflow-hidden border ${
+                tier.highlight
+                  ? "border-primary shadow-md dark:border-primary/50"
+                  : "border-gray-200 dark:border-gray-700"
+              } transition-all hover:shadow-lg bg-white dark:bg-gray-800 relative`}
+            >
+              {tier.highlight && (
+                <div className="absolute top-0 w-full text-center py-1 bg-primary text-white text-xs font-medium">
+                  Most Popular
+                </div>
+              )}
+
+              <div className={`p-6 ${tier.highlight ? "pt-8" : ""}`}>
+                <h3 className="text-xl font-semibold mb-2">{tier.name}</h3>
+                <p className="text-sm text-lightTextSecondary dark:text-darkTextSecondary mb-4">
+                  {tier.description}
+                </p>
+
+                <div className="mb-4">
+                  <span className="text-3xl font-bold">{tier.price}</span>
+                  <span className="text-lightTextSecondary dark:text-darkTextSecondary ml-1 text-sm">
+                    starting price
+                  </span>
+                </div>
+
+                <p className="text-sm mb-4">
+                  <span className="font-medium">Typical Duration:</span>{" "}
+                  {tier.duration}
+                </p>
+
+                <ul className="space-y-2 mb-6">
+                  {tier.features.map((feature, i) => (
+                    <li key={i} className="flex text-sm">
+                      <svg
+                        className="h-5 w-5 text-green-500 mr-2 flex-shrink-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span className="text-lightTextSecondary dark:text-darkTextSecondary">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="text-xs text-lightTextSecondary dark:text-darkTextSecondary italic mb-4">
+                  {tier.suggested}
+                </p>
+
+                <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                  <a
+                    href="#contact"
+                    className={`block text-center py-2 px-4 rounded ${
+                      tier.highlight
+                        ? "bg-primary text-white hover:bg-primary/90"
+                        : "bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600"
+                    } transition-colors`}
+                  >
+                    Discuss Your Project
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center max-w-2xl mx-auto">
+          <h3 className="text-xl font-medium mb-3">Custom Project?</h3>
+          <p className="text-lightTextSecondary dark:text-darkTextSecondary mb-6">
+            Every project is unique. If your needs don't fit into these
+            packages, I'd be happy to provide a custom quote based on your
+            specific requirements.
+          </p>
+          <a
+            href="#contact"
+            className="inline-block py-2 px-6 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
           >
-            <h3 className="text-xl font-semibold mb-4">{option.title}</h3>
-            <p className="text-lg font-bold mb-4">{option.price}</p>
-            <p className="mb-4">{option.description}</p>
-            <ul className="mb-4">
-              {option.features.map((feature, index) => (
-                <li key={index} className="text-sm">
-                  - {feature}
-                </li>
-              ))}
-            </ul>
-            <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-              Get Started
-            </button>
-          </div>
-        ))}
+            Contact for Custom Quote
+          </a>
+        </div>
       </div>
-      <p className="text-center mt-6 text-sm">
-        Custom pricing available for unique projects. Contact me for details.
-      </p>
     </section>
   );
 }
