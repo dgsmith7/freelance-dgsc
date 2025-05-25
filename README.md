@@ -1,61 +1,133 @@
-# DGS Creative LLC Web App
+# DGS Creative LLC - Portfolio Website
 
-This is a web application for DGS Creative LLC, showcasing skills in computer graphics, emerging technologies, and bespoke web development.
+A professional portfolio website for DGS Creative LLC, showcasing specialized web development services with a focus on 3D graphics, blockchain technology, AI/ML integration, and more.
+
+## Technologies Used
+
+- **Frontend**: React.js, Tailwind CSS, Vite
+- **Backend**: Node.js, Express.js
+- **Email**: Nodemailer
+- **Deployment**: Docker
 
 ## Features
-- Portfolio section with animations
-- About section with qualifications and veteran-owned business emblem
-- Pricing section with competitive options
-- Contact form with Nodemailer
-- Dark mode and light mode
-- Accessibility and SEO best practices
 
-## Technologies
-- Vite
-- React.js
-- Tailwind CSS
-- Node.js
-- Express.js
-- Nodemailer
+- Responsive design for all devices
+- Dark/light mode toggle
+- Portfolio showcase with animations
+- Technology expertise display
+- Pricing options
+- Contact form with validation
+- Accessibility compliant
+- SEO optimized
 
-## Setup Instructions
+## Prerequisites
 
-### Prerequisites
-- Node.js (latest LTS version)
-- Docker (optional for containerization)
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v18 or newer)
+- [npm](https://www.npmjs.com/) (v8 or newer)
+- [Docker](https://www.docker.com/) (optional, for containerized deployment)
 
-### Running Locally
-1. Clone the repository:
+## Local Development Setup
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/yourusername/freelance-dgsc.git
+cd freelance-dgsc
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Start the development server**
+
+```bash
+npm run dev
+```
+
+The site will be available at `http://localhost:5173`
+
+4. **Build for production**
+
+```bash
+npm run build
+```
+
+This will generate optimized files in the `dist` directory.
+
+5. **Preview production build locally**
+
+```bash
+npm run preview
+```
+
+## Docker Deployment
+
+### Building the Docker Image
+
+```bash
+docker build -t freelance-dgsc .
+```
+
+### Running the Docker Container
+
+```bash
+docker run -p 5000:5000 freelance-dgsc
+```
+
+The site will be available at `http://localhost:5000`
+
+### Docker Compose (Optional)
+
+For more complex setups with environment variables, create a `docker-compose.yml` file:
+
+```yaml
+version: '3'
+services:
+  website:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      # Add other environment variables as needed
+```
+
+Then run:
+
+```bash
+docker-compose up -d
+```
+
+## Server Deployment
+
+### Option 1: Traditional Web Hosting
+
+1. Build the production version:
    ```bash
-   git clone <repository-url> # Replace <repository-url> with the actual URL
-   cd freelance-dgsc
+   npm run build
    ```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+2. Upload the contents of the `dist` folder to your web hosting provider.
 
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
+### Option 2: Cloud Deployment (e.g., AWS, DigitalOcean, etc.)
 
-4. Open the app in your browser at `http://localhost:3000`.
+1. Set up a virtual machine on your preferred cloud provider
+2. Install Docker on the VM
+3. Clone this repository
+4. Build and run the Docker container as described above
 
-### Docker Deployment
-1. Build the Docker image:
-   ```bash
-   docker build -t freelance-dgsc .
-   ```
+### Option 3: CI/CD Pipeline (e.g., GitHub Actions)
 
-2. Run the container:
-   ```bash
-   docker run -p 3000:3000 freelance-dgsc
-   ```
+This repository can be configured with GitHub Actions for automated deployment:
 
-3. Access the app at `http://localhost:3000`.
+1. Set up secrets for your deployment environment
+2. Use the included GitHub Actions workflow files (if applicable)
+3. Push to the main branch to trigger automatic deployment
 
-## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-# freelance-dgsc
+## Environment Variables
+
+Create a `.env` file in the root directory with the following variables:

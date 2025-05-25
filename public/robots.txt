@@ -1,4 +1,6 @@
+# Allow all crawlers
 User-agent: *
 Allow: /
 
-Sitemap: https://www.dgscreative.com/sitemap.xml
+# Sitemap location
+Sitemap: https://dgscreative.com/sitemap.xml

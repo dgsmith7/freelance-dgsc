@@ -2,101 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom global styles */
-
-/* Fade-in animations */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 0.5s ease-in-out forwards;
+/* 
+ * CSS custom properties for theme management
+ * Enables consistent dark/light mode throughout the app
+ */
+:root {
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7fafc;
+  --accent-primary: #3182ce;
+  --accent-secondary: #2c5282;
 }
 
+html.dark {
+  --text-primary: #f7fafc;
+  --text-secondary: #a0aec0;
+  --bg-primary: #1a202c;
+  --bg-secondary: #2d3748;
+  --accent-primary: #4299e1;
+  --accent-secondary: #63b3ed;
+}
+
+/* 
+ * Animation definitions for page transitions
+ * Enhances visual experience without being distracting
+ */
 @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Reduce motion for users who prefer minimal animations */
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/*
+ * Aspect ratio utilities for consistent image containers
+ * Prevents layout shifts during image loading
+ */
+.aspect-w-16 {
+  position: relative;
+  padding-bottom: calc(9 / 16 * 100%);
+}
+
+.aspect-w-16 > * {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
   * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .fade-in {
     animation: none !important;
-    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
-/* Base styles */
-body {
-  @apply antialiased font-sans bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText;
-}
-
-/* Section and div background styles */
-section,
-div {
-  @apply bg-lightBackground dark:bg-darkBackground;
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Focus styles for accessibility */
+/* Focus styles for better visibility */
 :focus-visible {
-  @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-lightBackground dark:ring-offset-darkBackground;
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
 }
 
-/* Button styles */
-button {
-  @apply px-4 py-2 rounded transition;
-}
-
-button:hover {
-  @apply bg-accent text-white;
-}
-
-/* Form styles */
-input,
-textarea {
-  @apply border border-gray-300 rounded p-2 transition focus:ring-2 focus:ring-accent focus:outline-none;
-}
-
-input:focus,
-textarea:focus {
-  @apply border-accent;
-}
-
-/* Page transition animations */
-.page-enter {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.page-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 300ms, transform 300ms;
-}
-
-.page-exit {
-  opacity: 1;
-}
-
-.page-exit-active {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 300ms, transform 300ms;
-}
-
-/* Custom global styles */
-.group:hover .group-hover\:text-blue-500 {
-  color: #3b82f6; /* Tailwind's blue-500 */
-}
-
-/* Styles for images */
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
+/* Utility to only visually hide content but keep it accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
