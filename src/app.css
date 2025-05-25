@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* Base styles and fonts */
+:root {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* Theme colors */
+:root {
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --bg-primary: #ffffff;
+  --bg-secondary: #F9FAFB;
+  --accent-primary: #3B82F6;
+  --accent-secondary: #1D4ED8;
+  --border-color: #E5E7EB;
+}
+
+html.dark {
+  --text-primary: #F9FAFB;
+  --text-secondary: #9CA3AF;
+  --bg-primary: #0A0F1E;
+  --bg-secondary: #111827;
+  --accent-primary: #60A5FA;
+  --accent-secondary: #3B82F6;
+  --border-color: #374151;
+  color-scheme: dark;
+}
+
+/* Base styles */
+html,
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+/* Theme transitions */
+html {
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+/* Theme transition for specific elements */
+body * {
+  transition: background-color 0.5s ease-in-out, 
+              border-color 0.5s ease-in-out,
+              color 0.5s ease-in-out, 
+              opacity 0.5s ease-in-out,
+              box-shadow 0.5s ease-in-out;
+
+/* Global transition settings */
+*,
+::before,
+::after {
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Reduce motion when user prefers it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

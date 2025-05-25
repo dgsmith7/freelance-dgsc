@@ -1,0 +1,10 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#3B82F6" class="dark:fill-blue-700 fill-blue-600" />
+  <rect x="120" y="60" width="160" height="120" rx="8" fill="white" class="dark:fill-gray-100 fill-white" fill-opacity="0.2" />
+  <circle cx="200" cy="120" r="24" fill="white" class="dark:fill-gray-100 fill-white" fill-opacity="0.2" />
+  <rect x="160" y="160" width="80" height="8" rx="4" fill="white" class="dark:fill-gray-100 fill-white" fill-opacity="0.2" />
+  <rect x="140" y="176" width="120" height="4" rx="2" fill="white" class="dark:fill-gray-100 fill-white" fill-opacity="0.2" />
+  <text x="200" y="230" font-family="sans-serif" font-size="16" fill="white" text-anchor="middle" class="dark:fill-gray-100 fill-white">
+    Project Image
+  </text>
+</svg>
