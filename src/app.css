@@ -111,9 +111,9 @@ body * {
   padding-bottom: calc(9 / 16 * 100%);
 }
 
-.aspect-h-9 {
-  /* This is handled by aspect-w-16 */
-}
+/* .aspect-h-9 { */
+/* This is handled by aspect-w-16 */
+/* } */
 
 .aspect-w-16 > * {
   position: absolute;

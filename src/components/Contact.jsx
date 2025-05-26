@@ -171,19 +171,57 @@ function Contact() {
     }
 
     setIsSubmitting(true);
+    setErrors({});
 
     try {
-      // Sanitize data before sending
-      const sanitizedData = sanitizeFormData(formData);
+      // Prepare minimal data for email
+      const emailData = {
+        name: formData.name,
+        email: formData.email,
+        message: formData.details || "No message provided",
+        // Include other fields if needed
+        company: formData.company,
+        projectType: formData.projectType,
+        budget: formData.budget,
+      };
 
-      // Here you would send the sanitized form data to your backend
-      // For now, we'll simulate a successful submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log("Sending form data:", emailData);
 
-      console.log("Form submission successful with data:", sanitizedData);
+      // Make the API call with a timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+      const response = await fetch("http://localhost:5001/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(emailData),
+        signal: controller.signal,
+      });
+
+      clearTimeout(timeoutId);
+
+      // Process response
+      const contentType = response.headers.get("content-type");
+      let result;
+
+      if (contentType && contentType.includes("application/json")) {
+        result = await response.json();
+      } else {
+        const text = await response.text();
+        console.log("Non-JSON response:", text);
+        result = { message: text };
+      }
+
+      if (!response.ok) {
+        throw new Error(result.details || result.error || "Server error");
+      }
+
+      console.log("Success response:", result);
       setSubmitted(true);
 
-      // Reset form data after successful submission
+      // Reset form data
       setFormData({
         name: "",
         email: "",
@@ -195,10 +233,18 @@ function Contact() {
         details: "",
       });
     } catch (error) {
-      console.error("Error submitting form:", error);
-      setErrors({
-        submission: "Something went wrong. Please try again later.",
-      });
+      console.error("Form submission error:", error);
+
+      // Show specific error message depending on type
+      if (error.name === "AbortError") {
+        setErrors({
+          submission: "Request timed out. Server may be unavailable.",
+        });
+      } else {
+        setErrors({
+          submission: `Error: ${error.message || "Something went wrong."}`,
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }

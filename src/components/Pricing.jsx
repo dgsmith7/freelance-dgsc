@@ -5,7 +5,7 @@ function Pricing() {
     {
       name: "Standard",
       description: "For simple websites and basic applications",
-      price: "$3,500",
+      price: "$2,500",
       duration: "2-3 weeks",
       features: [
         "Responsive website or simple web app",
@@ -14,6 +14,7 @@ function Pricing() {
         "Content management integration",
         "Mobile-friendly design",
         "Basic SEO optimization",
+        "30 days support",
       ],
       suggested: "Ideal for small businesses and personal projects",
       estimatedHours: "35-45 hours",
@@ -21,8 +22,8 @@ function Pricing() {
     {
       name: "Professional",
       description: "For advanced websites and interactive applications",
-      price: "$8,500",
-      duration: "4-8 weeks",
+      price: "$5,000",
+      duration: "2-6 weeks",
       features: [
         "Dynamic web application",
         "Custom animations and interactions",
@@ -31,15 +32,16 @@ function Pricing() {
         "Dashboard or admin interface",
         "Performance optimization",
         "Comprehensive testing",
+        "30 days support",
       ],
       suggested: "Perfect for established businesses and specialized needs",
-      estimatedHours: "85-115 hours",
+      estimatedHours: "45-75 hours",
       highlight: true,
     },
     {
       name: "Premium",
       description: "For specialized technical projects",
-      price: "$15,000+",
+      price: "$8,000+",
       duration: "8-12 weeks",
       features: [
         "Advanced 3D graphics or visualizations",
@@ -49,9 +51,10 @@ function Pricing() {
         "Complex data processing",
         "Custom algorithm development",
         "Comprehensive documentation",
+        "30 days support",
       ],
       suggested: "Ideal for technical innovations and specialized applications",
-      estimatedHours: "150+ hours",
+      estimatedHours: "125+ hours",
     },
   ];
 

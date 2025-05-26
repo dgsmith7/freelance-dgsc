@@ -11,11 +11,31 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
-// Middleware
-app.use(cors()); // Enable Cross-Origin Resource Sharing
+// Middleware with more permissive CORS for development
+app.use(cors({
+  origin: true, // Allow all origins in development
+  credentials: true
+}));
 app.use(express.json()); // Parse JSON request bodies
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
+
+// Allow CORS for development
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "POST, GET");
+    return res.status(200).json({});
+  }
+  next();
+});
+
+// Add a simple test endpoint
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'Server is working correctly!' });
+});
 
 // POST endpoint for contact form
 app.post(
@@ -36,28 +56,92 @@ app.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, message } = req.body;
-
     try {
+      // Extract all form fields
+      const { 
+        name, 
+        email, 
+        company, 
+        budget, 
+        projectType, 
+        timeline, 
+        preferredContact, 
+        details,
+        message
+      } = req.body;
+      
+      // Format budget display if it's a code
+      let budgetDisplay = budget;
+      if (budget) {
+        switch(budget) {
+          case 'under5k': budgetDisplay = 'Under $5,000'; break;
+          case '5k-10k': budgetDisplay = '$5,000 - $10,000'; break;
+          case '10k-20k': budgetDisplay = '$10,000 - $20,000'; break;
+          case '20k-50k': budgetDisplay = '$20,000 - $50,000'; break;
+          case 'over50k': budgetDisplay = 'Over $50,000'; break;
+          case 'undecided': budgetDisplay = 'Not decided yet'; break;
+        }
+      }
+      
+      // Format timeline display
+      let timelineDisplay = timeline;
+      if (timeline) {
+        switch(timeline) {
+          case 'asap': timelineDisplay = 'As soon as possible'; break;
+          case '1month': timelineDisplay = 'Within 1 month'; break;
+          case '3months': timelineDisplay = 'Within 3 months'; break;
+          case 'flexible': timelineDisplay = 'Flexible / No rush'; break;
+        }
+      }
+
+      // Create comprehensive email body
+      const emailText = `
+New Contact Form Submission
+==========================
+
+CONTACT INFORMATION
+------------------
+Name: ${name}
+Email: ${email}
+${company ? `Company/Organization: ${company}` : ''}
+Preferred Contact Method: ${preferredContact || 'Not specified'}
+
+PROJECT DETAILS
+------------------
+${projectType && projectType.length ? `Project Type: ${projectType.join(', ')}` : 'Project Type: Not specified'}
+${budgetDisplay ? `Budget: ${budgetDisplay}` : ''}
+${timelineDisplay ? `Timeline: ${timelineDisplay}` : ''}
+
+MESSAGE
+------------------
+${details || message || 'No message provided'}
+`;
+
       // Configure Nodemailer transporter
       const transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: process.env.MAIL_SERVICE,
+        host: process.env.MAIL_HOST,
+        port: parseInt(process.env.MAIL_PORT, 10),
+        secure: process.env.MAIL_SECURE === "true",
         auth: {
-          user: process.env.EMAIL_USER, // Email address from environment variables
-          pass: process.env.EMAIL_PASS, // Email password from environment variables
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS,
         },
       });
 
       // Email options
       const mailOptions = {
-        from: email,
-        to: process.env.EMAIL_USER,
-        subject: `New Contact Form Submission from ${name}`,
-        text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+        from: `"DGS Creative Contact Form" <${process.env.EMAIL_USER}>`,
+        to: process.env.RECIPIENT_EMAIL,
+        replyTo: email,
+        subject: `New Inquiry from ${name}${company ? ` (${company})` : ''}`,
+        text: emailText,
       };
 
       // Send email
-      await transporter.sendMail(mailOptions);
+      const info = await transporter.sendMail(mailOptions);
+      console.log("Email sent successfully:", info.messageId);
+      
       res.status(200).json({ message: "Email sent successfully!" });
     } catch (error) {
       console.error("Error sending email:", error);
@@ -65,6 +149,12 @@ app.post(
     }
   }
 );
+
+// Add an error handler
+app.use((err, req, res, next) => {
+  console.error("Express error:", err);
+  res.status(500).json({ error: "Server error", details: err.message });
+});
 
 // Start the server
 app.listen(PORT, () => {
