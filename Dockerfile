@@ -7,20 +7,20 @@ WORKDIR /app
 # Copy package files
 COPY package.json package-lock.json ./
 
-# Install dependencies 
-RUN npm ci --production
+# Install dependencies with dev dependencies for build step
+RUN npm ci
 
 # Copy project files
 COPY . .
 
-# Build the production version
+# Build the frontend
 RUN npm run build
 
-# Install a simple HTTP server to serve the static content
-RUN npm install -g serve
+# Remove dev dependencies to slim down the image
+RUN npm prune --production
 
 # Expose the port the app will run on
 EXPOSE 5000
 
-# Command to run the app
-CMD ["serve", "-s", "dist", "-l", "5000"]
+# Command to run the app using the Express server
+CMD ["npm", "run", "start"]
