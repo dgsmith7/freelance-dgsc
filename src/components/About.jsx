@@ -54,13 +54,17 @@ function About() {
               <ul className="space-y-2 mb-6">
                 <li>
                   7+ years of undergraduate and graduate teaching experience in
-                  the domain of foundational development skills and generative
-                  art
+                  the domain of code development and generative art (creative
+                  computation).
                 </li>
                 <li>
-                  20+ years as aviator in US Coast Guard and US Army -
-                  leadership, project management, strategic planning, and team
-                  coordination
+                  20+ years of active military service as aviator in US Coast
+                  Guard and US Army - leadership, project management, strategic
+                  planning, and team coordination are hallmarks of my ethos.
+                </li>
+                <li>
+                  I have the knowledge and soft skills to get you the results
+                  you are looking for.
                 </li>
               </ul>
             </p>
@@ -76,9 +80,28 @@ function About() {
               />
             </div>
 
-            <div className="text-sm text-center text-lightTextSecondary dark:text-darkTextSecondary">
+            <div className="mb-4 text-sm text-center text-lightTextSecondary dark:text-darkTextSecondary">
               Leveraging military precision and discipline in the delivery of
               software solutions
+            </div>
+            <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 w-full max-w-sm">
+              <h4 className="text-center font-medium mb-2">
+                Sam.gov registered
+              </h4>
+              <ul className="text-sm text-lightTextSecondary dark:text-darkTextSecondary space-y-1">
+                <li>Entity ID: UHXKFGZ8UR53</li>
+                <li>CAGE Code: 9HV14</li>
+                <li className="pt-1 border-t border-gray-200 dark:border-gray-700 mt-2">
+                  <span className="font-medium">NAICS Codes:</span>
+                  <ul className="pl-3 mt-1 space-y-1">
+                    <li>541511 - Custom Computer Programming Services</li>
+                    <li>541519 - Other Computer Related Services</li>
+                    <li>
+                      711510 - Independent Artists, Writers, and Performers
+                    </li>
+                  </ul>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

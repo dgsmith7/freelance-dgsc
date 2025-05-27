@@ -12,9 +12,9 @@ function Hero({ scrollToSection }) {
           <span className="text-primary">Through Advanced Technology</span>
         </h1>
         <p className="text-lg mb-8 max-w-2xl text-gray-600 dark:text-gray-300">
-          Specializing in cutting-edge web development with expertise in 3D
-          graphics, blockchain technology, artificial intelligence, and machine
-          learning.
+          Specializing in cutting-edge full-stack web development with expertise
+          in 3D graphics, blockchain technology, artificial intelligence, and
+          machine learning.
         </p>
         <div className="flex flex-wrap gap-4">
           <button
