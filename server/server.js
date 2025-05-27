@@ -20,24 +20,20 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 const isProduction = process.env.NODE_ENV === 'production';
 
-// Middleware with more permissive CORS for development
-app.use(cors(isProduction ? {
-  origin: process.env.CORS_ORIGIN || 'https://yourdeployeddomain.com',
-  optionsSuccessStatus: 200
-} : {}));
+// Set up CORS with proper configuration
+const corsOptions = isProduction 
+  ? { 
+      origin: process.env.CORS_ORIGIN || 'https://yourdomain.com',
+      optionsSuccessStatus: 200
+    } 
+  : { 
+      origin: '*',
+      optionsSuccessStatus: 200
+    };
+
+app.use(cors(corsOptions));
 app.use(express.json()); // Parse JSON request bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
-
-// Allow CORS for development
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "POST, GET");
-    return res.status(200).json({});
-  }
-  next();
-});
 
 // Serve static files from the React app
 if (isProduction) {
