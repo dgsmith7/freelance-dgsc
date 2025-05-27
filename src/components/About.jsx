@@ -51,10 +51,18 @@ function About() {
 
             <h3 className="text-xl font-medium mb-3">Experience</h3>
             <p className="text-lightTextSecondary dark:text-darkTextSecondary mb-6">
-              My professional background includes over twenty years of
-              leadership experience as an aviator in the U.S. Coast Guard and
-              U.S. Army, where I developed strong skills in project management,
-              strategic planning, and team coordination.
+              <ul className="space-y-2 mb-6">
+                <li>
+                  7+ years of undergraduate and graduate teaching experience in
+                  the domain of foundational development skills and generative
+                  art
+                </li>
+                <li>
+                  20+ years as aviator in US Coast Guard and US Army -
+                  leadership, project management, strategic planning, and team
+                  coordination
+                </li>
+              </ul>
             </p>
           </div>
 

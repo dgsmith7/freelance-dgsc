@@ -22,7 +22,7 @@ function Pricing() {
     {
       name: "Professional",
       description: "For advanced websites and interactive applications",
-      price: "$5,000",
+      price: "$4,000",
       duration: "2-6 weeks",
       features: [
         "Dynamic web application",
@@ -41,7 +41,7 @@ function Pricing() {
     {
       name: "Premium",
       description: "For specialized technical projects",
-      price: "$8,000+",
+      price: "$6,000+",
       duration: "8-12 weeks",
       features: [
         "Advanced 3D graphics or visualizations",
@@ -63,8 +63,9 @@ function Pricing() {
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl font-semibold text-center mb-3">Pricing</h2>
         <p className="text-center text-lightTextSecondary dark:text-darkTextSecondary mb-10 max-w-2xl mx-auto">
-          Transparent pricing options designed to deliver excellent value for
-          your investment
+          Choose one of these transparent pricing options designed to deliver
+          excellent value for your investment or contact me for a custom quote
+          tailored to your specific project needs.
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">

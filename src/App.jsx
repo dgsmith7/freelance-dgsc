@@ -54,7 +54,7 @@ function App() {
           </title>
           <meta
             name="description"
-            content="Specialized web development services featuring 3D graphics, blockchain, AI/ML, and custom solutions. Expert developer with a creative approach to technical challenges."
+            content="Specialized web development services featuring 3D graphics, blockchain, AI/ML, microservices, and other custom solutions. Expert developer with a creative approach to technical challenges."
           />
           <meta
             name="keywords"

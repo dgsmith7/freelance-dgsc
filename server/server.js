@@ -6,18 +6,25 @@ import nodemailer from "nodemailer";
 import cors from "cors";
 import { body, validationResult } from "express-validator";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+
+// Get current file path (ESM doesn't have __dirname)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Load environment variables
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5001;
+const isProduction = process.env.NODE_ENV === 'production';
 
 // Middleware with more permissive CORS for development
-app.use(cors({
-  origin: true, // Allow all origins in development
-  credentials: true
-}));
+app.use(cors(isProduction ? {
+  origin: process.env.CORS_ORIGIN || 'https://yourdeployeddomain.com',
+  optionsSuccessStatus: 200
+} : {}));
 app.use(express.json()); // Parse JSON request bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
@@ -31,6 +38,21 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+// Serve static files from the React app
+if (isProduction) {
+  // Serve static files from the React app build folder
+  app.use(express.static(path.join(__dirname, '../dist')));
+  
+  // Serve index.html for any request that doesn't match an API route
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
+  });
+  
+  console.log("Running in production mode - serving static files");
+} else {
+  console.log("Running in development mode - API server only");
+}
 
 // Add a simple test endpoint
 app.get('/api/test', (req, res) => {
@@ -158,5 +180,6 @@ app.use((err, req, res, next) => {
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT} in ${isProduction ? 'production' : 'development'} mode`);
+  console.log(`http://localhost:${PORT}`);
 });

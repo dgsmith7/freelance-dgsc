@@ -7,7 +7,7 @@ import React, { useState, useEffect, useRef } from "react";
 const projects = [
   {
     id: 1,
-    title: "3D Graphics Demo",
+    title: "3D Graphics Product / Concept Demo",
     image: {
       small: "/images/3d-graphics-small.webp",
       medium: "/images/3d-graphics-medium.webp",
@@ -16,6 +16,7 @@ const projects = [
     link: "https://dgsmith7.github.io/micro-encabulator-site/",
     description:
       "An immersive 3d graphics experience designed to showcase a specific product or to explain and educate.",
+    categories: [],
   },
   {
     id: 2,
@@ -25,34 +26,34 @@ const projects = [
       medium: "/images/blockchain-medium.webp",
       large: "/images/blockchain-large.webp",
     },
-    link: "https://example.com/blockchain",
+    link: "https://dgs-creative.com",
     description:
-      "A secure and efficient blockchain-based smart contract implementation.",
+      "A secure and efficient personal NFT mint on the Arbitrum One network with a custom Solidty Smart Contract.  Allows digital artists to take full control of their NFT sales.",
   },
-  {
-    id: 3,
-    title: "AI-Powered Web App",
-    image: {
-      small: "/images/ai-webapp-small.webp",
-      medium: "/images/ai-webapp-medium.webp",
-      large: "/images/ai-webapp-large.webp",
-    },
-    link: "https://example.com/ai-webapp",
-    description:
-      "A web application leveraging AI to deliver personalized user experiences.",
-  },
-  {
-    id: 4,
-    title: "Machine Learning Visualization",
-    image: {
-      small: "/images/ml-visualization-small.webp",
-      medium: "/images/ml-visualization-medium.webp",
-      large: "/images/ml-visualization-large.webp",
-    },
-    link: "https://example.com/ml-visualization",
-    description:
-      "Interactive visualizations to make machine learning concepts more accessible.",
-  },
+  // {
+  //   id: 3,
+  //   title: "AI-Powered Web App",
+  //   image: {
+  //     small: "/images/ai-webapp-small.webp",
+  //     medium: "/images/ai-webapp-medium.webp",
+  //     large: "/images/ai-webapp-large.webp",
+  //   },
+  //   link: "",
+  //   description:
+  //     "PAISLEY - Psychedeleic AI Song Lyric Generator. A web application leveraging AI to deliver a fun and novel experience.  Runs on Llama 4 Scout model on a CPU-only platform.  Can be deployed on GPU for higher performance.",
+  // },
+  // {
+  //   id: 4,
+  //   title: "E-commerce Platform",
+  //   image: {
+  //     small: "/images/ml-visualization-small.webp",
+  //     medium: "/images/ml-visualization-medium.webp",
+  //     large: "/images/ml-visualization-large.webp",
+  //   },
+  //   link: "",
+  //   description:
+  //     "Custom and personalized marketplace platform for buying and selling products, with advanced features and user-friendly design.",
+  // },
   {
     id: 5,
     title: "Custom Game Development",
@@ -61,36 +62,48 @@ const projects = [
       medium: "/images/game-dev-medium.webp",
       large: "/images/game-dev-large.webp",
     },
-    link: "https://example.com/game-dev",
+    link: "",
     description:
-      "A custom-built game designed for entertainment and engagement.",
+      "Rex Nemorensis - A custom turn-based text adventure where players compete against a trained AI opponent or each other.",
   },
   {
     id: 6,
+    title: "Deep-Q Network / Custom API",
+    image: {
+      small: "/images/deepq-small.webp",
+      medium: "/images/deepq-medium.webp",
+      large: "/images/deepq-large.webp",
+    },
+    link: "",
+    description:
+      "A custom Deep-Q network for reinforcement learning tasks (like training opponent bots for the Rex Nemorensis game).",
+  },
+  {
+    id: 7,
     title: "IPFS Ecosystem",
     image: {
       small: "/images/ipfs-ecosystem-small.webp",
       medium: "/images/ipfs-ecosystem-medium.webp",
       large: "/images/ipfs-ecosystem-large.webp",
     },
-    link: "https://example.com/ipfs-ecosystem",
+    link: "https://pin.dgs-creative.com/nodeinfo",
     description:
-      "A decentralized ecosystem leveraging IPFS for distributed storage and sharing.",
+      "An operating node on the decentralized 'Interplanetary File System (IPFS)', as well as an invitation-only personal file-pinning service and API to access the node.",
   },
   {
-    id: 7,
+    id: 8,
     title: "Artist Portfolio",
     image: {
       small: "/images/artist-portfolio-small.webp",
       medium: "/images/artist-portfolio-medium.webp",
       large: "/images/artist-portfolio-large.webp",
     },
-    link: "https://example.com/artist-portfolio",
+    link: "https://davidgailsmith.com",
     description:
       "A visually stunning portfolio showcasing an artist's work and creative journey.",
   },
   {
-    id: 8,
+    id: 9,
     title: "Microservice / Custom API",
     image: {
       small: "/images/microservice-small.webp",
@@ -99,7 +112,7 @@ const projects = [
     },
     link: "",
     description:
-      "A scalable and efficient microservice or custom API tailored to meet specific business needs.",
+      "SOFIA (Samgov AI Opportunity Finding Agent) - A custom web-service with no front end, designed to research and report government contracting opportunities with filtering and AI analysis.",
   },
 ];
 
