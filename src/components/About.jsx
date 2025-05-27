@@ -24,18 +24,18 @@ function About() {
         <div className="flex flex-col md:flex-row gap-8 items-start">
           {/* Left column: Professional summary */}
           <div className="md:w-3/5">
-            <p className="text-lightTextSecondary dark:text-darkTextSecondary mb-4">
+            <div className="text-lightTextSecondary dark:text-darkTextSecondary mb-4">
               I combine technical expertise with creative vision to develop
               custom solutions that bridge the gap between design and
               functionality.
-            </p>
+            </div>
 
-            <p className="text-lightTextSecondary dark:text-darkTextSecondary mb-6">
+            <div className="text-lightTextSecondary dark:text-darkTextSecondary mb-6">
               With a background spanning both fine arts and software
               engineering, I bring a unique perspective to digital projects,
               focusing on creating elegant solutions that serve real business
               needs and deliver exceptional user experiences.
-            </p>
+            </div>
 
             <h3 className="text-xl font-medium mb-3">Education</h3>
             <ul className="space-y-2 mb-6">
@@ -50,7 +50,7 @@ function About() {
             </ul>
 
             <h3 className="text-xl font-medium mb-3">Experience</h3>
-            <p className="text-lightTextSecondary dark:text-darkTextSecondary mb-6">
+            <div className="text-lightTextSecondary dark:text-darkTextSecondary mb-6">
               <ul className="space-y-2 mb-6">
                 <li>
                   7+ years of undergraduate and graduate teaching experience in
@@ -84,7 +84,7 @@ function About() {
                   you are looking for.
                 </li>
               </ul>
-            </p>
+            </div>
           </div>
 
           {/* Right column: VOB logo and certifications */}

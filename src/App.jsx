@@ -5,7 +5,6 @@ import Portfolio from "./components/Portfolio";
 import About from "./components/About";
 import Pricing from "./components/Pricing";
 import Contact from "./components/Contact";
-import Skills from "./components/Skills";
 import ThemeToggle from "./components/ThemeToggle";
 import TechStack from "./components/TechStack";
 import Hero from "./components/sections/Hero";
@@ -140,7 +139,6 @@ function App() {
                   "home",
                   "portfolio",
                   "tech-stack",
-                  "skills",
                   "pricing",
                   "about",
                   "contact",
@@ -208,14 +206,6 @@ function App() {
             className="bg-lightBackground dark:bg-darkBackground"
           >
             <TechStack />
-          </section>
-
-          {/* Advanced Skills Section */}
-          <section
-            id="skills"
-            className="bg-lightBackground dark:bg-darkBackground"
-          >
-            <Skills />
           </section>
 
           {/* Pricing Section */}
