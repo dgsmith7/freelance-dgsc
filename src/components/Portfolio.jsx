@@ -16,11 +16,11 @@ const projects = [
     link: "https://dgsmith7.github.io/micro-encabulator-site/",
     description:
       "An immersive 3d graphics experience designed to showcase a specific product or to explain and educate.",
-    categories: [],
+    categories: ["3d", "web"],
   },
   {
     id: 2,
-    title: "Blockchain Smart Contract",
+    title: "Web3 Blockchain and Smart Contract Integration",
     image: {
       small: "/images/blockchain-small.webp",
       medium: "/images/blockchain-medium.webp",
@@ -29,6 +29,7 @@ const projects = [
     link: "https://dgs-creative.com",
     description:
       "A secure and efficient personal NFT mint on the Arbitrum One network with a custom Solidty Smart Contract.  Allows digital artists to take full control of their NFT sales.",
+    categories: ["3d", "web", "blockchain"],
   },
   // {
   //   id: 3,
@@ -41,6 +42,7 @@ const projects = [
   //   link: "",
   //   description:
   //     "PAISLEY - Psychedeleic AI Song Lyric Generator. A web application leveraging AI to deliver a fun and novel experience.  Runs on Llama 4 Scout model on a CPU-only platform.  Can be deployed on GPU for higher performance.",
+  //  categories: ["3d", "web", "ai"],
   // },
   // {
   //   id: 4,
@@ -53,6 +55,7 @@ const projects = [
   //   link: "",
   //   description:
   //     "Custom and personalized marketplace platform for buying and selling products, with advanced features and user-friendly design.",
+  //  categories: ["web", "blockchain"],
   // },
   {
     id: 5,
@@ -64,7 +67,8 @@ const projects = [
     },
     link: "",
     description:
-      "Rex Nemorensis - A custom turn-based text adventure where players compete against a trained AI opponent or each other.",
+      "Rex Nemorensis - A customized, turn-based text adventure where players compete against a trained AI opponent or each other.",
+    categories: ["ai", "web", "game"],
   },
   {
     id: 6,
@@ -77,6 +81,7 @@ const projects = [
     link: "",
     description:
       "A custom Deep-Q network for reinforcement learning tasks (like training opponent bots for the Rex Nemorensis game).",
+    categories: ["ai", "web"],
   },
   {
     id: 7,
@@ -89,6 +94,7 @@ const projects = [
     link: "https://pin.dgs-creative.com/nodeinfo",
     description:
       "An operating node on the decentralized 'Interplanetary File System (IPFS)', as well as an invitation-only personal file-pinning service and API to access the node.",
+    categories: ["blockchain", "web"],
   },
   {
     id: 8,
@@ -101,6 +107,7 @@ const projects = [
     link: "https://davidgailsmith.com",
     description:
       "A visually stunning portfolio showcasing an artist's work and creative journey.",
+    categories: ["3d", "web"],
   },
   {
     id: 9,
@@ -113,6 +120,7 @@ const projects = [
     link: "",
     description:
       "SOFIA (Samgov AI Opportunity Finding Agent) - A custom web-service with no front end, designed to research and report government contracting opportunities with filtering and AI analysis.",
+    categories: ["web", "ai"],
   },
 ];
 

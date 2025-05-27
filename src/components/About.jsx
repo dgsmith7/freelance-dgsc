@@ -54,13 +54,30 @@ function About() {
               <ul className="space-y-2 mb-6">
                 <li>
                   7+ years of undergraduate and graduate teaching experience in
-                  the domain of code development and generative art (creative
-                  computation).
+                  the domain of code development and generative art (
+                  <a
+                    href="https://www.smu.edu/meadows/areasofstudy/creativecomputation"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent-primary dark:text-accent-primary hover:underline"
+                  >
+                    Creative Computation
+                  </a>{" "}
+                  and{" "}
+                  <a
+                    href="https://www.smu.edu/meadows/areasofstudy/creativetechnology"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent-primary dark:text-accent-primary hover:underline"
+                  >
+                    Creative Technology
+                  </a>
+                  ).
                 </li>
                 <li>
                   20+ years of active military service as aviator in US Coast
                   Guard and US Army - leadership, project management, strategic
-                  planning, and team coordination are hallmarks of my ethos.
+                  planning, and team coordination are hallmarks of my practice.
                 </li>
                 <li>
                   I have the knowledge and soft skills to get you the results
