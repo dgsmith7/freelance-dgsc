@@ -83,6 +83,19 @@ const projects = [
       "A custom Deep-Q network for reinforcement learning tasks (like training opponent bots for the Rex Nemorensis game).",
     categories: ["ai", "web"],
   },
+  // {
+  //   id: 3,
+  //   title: "GLSL Shader Demo - Image Filtering and Processing",
+  //   image: {
+  //     small: "/images/glsl-small.webp",
+  //     medium: "/images/glsl-medium.webp",
+  //     large: "/images/glsl-large.webp",
+  //   },
+  //   link: "",
+  //   description:
+  //     "A website that demonstrated multiple image filters written in GLSL shader language.",
+  //  categories: ["3d", "web"],
+  // },
   {
     id: 7,
     title: "IPFS Ecosystem",
