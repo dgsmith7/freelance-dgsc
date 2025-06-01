@@ -26,14 +26,14 @@ const projects = [
       medium: "/images/blockchain-medium.webp",
       large: "/images/blockchain-large.webp",
     },
-    link: "https://dgs-creative.com",
+    link: "", //"https://nft.dgs-creative.com",
     description:
       "A secure and efficient personal NFT mint on the Arbitrum One network with a custom Solidty Smart Contract.  Allows digital artists to take full control of their NFT sales.",
     categories: ["3d", "web", "blockchain"],
   },
   // {
   //   id: 3,
-  //   title: "AI-Powered Web App",
+  //   title: "AI-Powered Web App or Blog",
   //   image: {
   //     small: "/images/ai-webapp-small.webp",
   //     medium: "/images/ai-webapp-medium.webp",
@@ -132,7 +132,7 @@ const projects = [
     },
     link: "",
     description:
-      "SOFIA (Samgov AI Opportunity Finding Agent) - A custom web-service with no front end, designed to research and report government contracting opportunities with filtering and AI analysis.",
+      "SOFIA (Samgov Opportunity Finding Integration Agent) - A custom web-service designed to research and report government contracting opportunities with filtering and AI analysis.",
     categories: ["web", "ai"],
   },
 ];
