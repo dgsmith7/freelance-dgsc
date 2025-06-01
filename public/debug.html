@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link Diagnostic - DGS Creative</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const infoDiv = document.getElementById('info');
+      infoDiv.innerHTML = `
+        <p><strong>URL:</strong> ${window.location.href}</p>
+        <p><strong>Referrer:</strong> ${document.referrer || 'None'}</p>
+        <p><strong>User Agent:</strong> ${navigator.userAgent}</p>
+        <p><strong>Mobile:</strong> ${/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)}</p>
+        <p><strong>Time:</strong> ${new Date().toString()}</p>
+      `;
+    });
+  </script>
+</head>
+
+<body>
+  <h1>DGS Creative Link Diagnostic</h1>
+  <div id="info"></div>
+</body>
+
+</html>

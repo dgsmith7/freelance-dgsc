@@ -324,9 +324,10 @@ function Portfolio() {
                   <a
                     href={project.link}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener noreferrer nofollow"
                     className="group block rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800 h-full transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
                     aria-label={`View ${project.title} project details`}
+                    data-project-type="external-link"
                   >
                     {renderProjectCard(project, handleImageLoad)}
                   </a>
