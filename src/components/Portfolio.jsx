@@ -132,7 +132,7 @@ const projects = [
     },
     link: "",
     description:
-      "SOFIA (Samgov Opportunity Finding Integration Agent) - A custom web-service designed to research and report government contracting opportunities with filtering and AI analysis.",
+      "SOFIA (Samgov Opportunity Finding Integration Assistant) - A custom web-service designed to research and report government contracting opportunities with filtering and AI analysis.",
     categories: ["web", "ai"],
   },
 ];
