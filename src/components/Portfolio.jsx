@@ -117,7 +117,7 @@ const projects = [
       medium: "/images/artist-portfolio-medium.webp",
       large: "/images/artist-portfolio-large.webp",
     },
-    link: "https://davidgailsmith.com",
+    link: "https://www.davidgailsmith.com",
     description:
       "A visually stunning portfolio showcasing an artist's work and creative journey.",
     categories: ["3d", "web"],

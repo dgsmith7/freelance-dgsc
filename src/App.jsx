@@ -17,6 +17,7 @@ function App() {
   // State for tracking active section and scroll position
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   /**
    * Sets up scroll event listener to update header styling
@@ -40,6 +41,22 @@ function App() {
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  /**
+   * Toggles the mobile menu open/closed
+   */
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  /**
+   * Handles mobile navigation clicks - scrolls to section and closes menu
+   * @param {string} sectionId - ID of the section to scroll to
+   */
+  const handleMobileNavClick = (sectionId) => {
+    scrollToSection(sectionId);
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -162,24 +179,78 @@ function App() {
             <div className="flex items-center space-x-4">
               <ThemeToggle />
               {/* Mobile menu button - simplified */}
-              <button className="md:hidden p-1 rounded-md text-lightTextSecondary dark:text-darkTextSecondary hover:text-primary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
+              <button 
+                onClick={toggleMobileMenu}
+                className="md:hidden p-1 rounded-md text-lightTextSecondary dark:text-darkTextSecondary hover:text-primary"
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? (
+                  // Close icon
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                ) : (
+                  // Hamburger icon
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                )}
               </button>
             </div>
           </div>
+
+          {/* Mobile Navigation Menu */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden mt-4 pb-4 border-t border-gray-200 dark:border-gray-700">
+              <nav className="mt-4">
+                <ul className="space-y-2">
+                  {[
+                    "home",
+                    "portfolio", 
+                    "tech-stack",
+                    "pricing",
+                    "about",
+                    "contact",
+                  ].map((section) => (
+                    <li key={section}>
+                      <button
+                        onClick={() => handleMobileNavClick(section)}
+                        className={`block w-full text-left py-2 px-4 text-sm tracking-wide transition-colors rounded-md ${
+                          activeSection === section
+                            ? "text-primary font-medium bg-gray-100 dark:bg-gray-800"
+                            : "text-lightTextSecondary dark:text-darkTextSecondary hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800"
+                        }`}
+                      >
+                        {section.charAt(0).toUpperCase() + section.slice(1)}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          )}
         </header>
 
         {/* Main content wrapper with accessibility attributes */}
