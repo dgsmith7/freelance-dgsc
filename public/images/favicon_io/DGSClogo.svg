@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" width="35" height="14" preserveAspectRatio="xMidYMid meet" viewBox="0 0 35 14">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="90%">
+      <stop offset="0%" stop-color="#888888"/>
+      <stop offset="70%" stop-color="#000000"/>
+    </linearGradient>
+
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5befff"/>
+      <stop offset="100%" stop-color="#8d58ff"/>
+    </linearGradient>
+
+   <linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="50%">
+      <stop offset="0%" stop-color="#aaaaaa"/>
+      <stop offset="80%" stop-color="#444444"/>
+    </linearGradient>
+  </defs>
+
+<!-- Background -->
+<rect x="0" y="0" width="35" height="14" rx="3" ry="3" stroke="none" fill="url(#grad1)" stroke-width="0.25"/>
+
+
+<circle cx="7" cy="7" r="5" stroke="url(#grad1)" fill="transparent" stroke-width="2"/>
+<circle cx="14" cy="7" r="5" stroke="url(#grad1)" fill="transparent" stroke-width="2"/>
+<circle cx="21" cy="7" r="5" stroke="url(#grad1)" fill="transparent" stroke-width="2"/>
+<circle cx="28" cy="7" r="5" stroke="url(#grad1)" fill="transparent" stroke-width="2"/>
+
+<!-- C -->
+    <path d="M 27.9 1 H 31 V 3 H 28 A 4 4 0 0 0 28 11 H 31 V 13 H 27.9 H 28 A 6 6 0 0 1 28 1 Z" fill="url(#grad1)" stroke="url(#grad2)" stroke-width="0.25" stroke-linejoin="round" stroke-linecap="round" />
+
+<!-- S -->
+<path d="M 18.4 1
+         H 23
+         A 4 4 0 0 1 27 4.3
+         H 25
+         A 2 2 0 0 0 23.6 3
+         H 18.4
+         A 1 1 0 1 0 18.4 6
+         H 23
+         A 1 1 0 0 1 23.6 13
+         H 18.4
+         A 4 4 0 0 1 15 9.5
+         H 17
+         A 2 2 0 0 0 18.4 11
+         H 23.6
+         A 1 1 0 0 0 23.6 8
+         H 18.4
+         A 1 1 0 1 1 18.4 1
+         Z"
+      fill="url(#grad3)" stroke="url(#grad2)" 
+      stroke-width="0.25"
+      stroke-linejoin="round"
+      stroke-linecap="round" /> 
+
+<!-- G -->
+<path d="M 14 1
+         H 17
+         V 3
+         H 14
+         A 4 4 0 1 0 17.5 9
+         H 14
+         V 7
+         H 20
+         A 6 6 0 1 1 14 1
+         H 14
+         Z"
+      fill="url(#grad1)" stroke="url(#grad2)" 
+      stroke-width="0.25"
+      stroke-linejoin="round"
+      stroke-linecap="round" />
+
+<!-- D -->
+<path d="M 4 1 H 7 A 6 6 0 0 1 7 13 H 4 V 11 H 7 A 4 4 0 0 0 7 3 H 4 Z" fill="url(#grad3)" stroke="url(#grad2)"  stroke-width="0.25" stroke-linejoin="round" stroke-linecap="round" />
+
+</svg>
